@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import { cn } from "@/app/lib/utils";
 import { Sparkles, Gem, ArrowRight } from "lucide-react";
 

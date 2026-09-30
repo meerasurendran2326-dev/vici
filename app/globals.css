@@ -54,7 +54,12 @@ button {
 .showroom-shell {
   position: relative;
   min-height: 100vh;
-  background: #F8F7F4;
+  background-color: #F8F7F4;
+  background-image: url('/images/green-fluid-waves.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   overflow: hidden;
 }
 
@@ -62,10 +67,9 @@ button {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(11, 74, 59, 0.04) 1px, transparent 1px);
-  background-size: 32px 32px;
-  opacity: 0.6;
+  background: radial-gradient(circle at 50% 30%, rgba(248, 247, 244, 0.2) 0%, rgba(248, 247, 244, 0.55) 100%);
   pointer-events: none;
+  z-index: 0;
 }
 
 /* Luxury Card Shadow & Silver Accent */

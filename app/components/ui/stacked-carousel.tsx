@@ -8,7 +8,7 @@ import {
   useTransform,
   animate,
   type MotionValue,
-} from "framer-motion";
+} from "motion/react";
 import { cn } from "@/app/lib/utils";
 import { Sparkles, Gem, ArrowRight } from "lucide-react";
 
