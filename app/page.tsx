@@ -6,26 +6,37 @@ import { FooterColumn } from "@/app/components/ui/FooterColumn";
 import GlbRingScene from "@/app/three/scenes/GlbRingScene";
 import dynamic from "next/dynamic";
 
+import CarouselStacked from "@/components/ui/carousel-07";
 const InfiniteGallery = dynamic(() => import("@/components/ui/3d-gallery-photography"), { ssr: false });
+import { ShaderBackground } from "@/components/ui/adisyon-shader";
 import { setupLenis } from "@/app/animations/scroll/lenis";
 import { gsap } from "gsap";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 const galleryImages = [
-  { src: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=800&auto=format&fit=crop", alt: "Vici Obsidian Signet Ring" },
-  { src: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=800&auto=format&fit=crop", alt: "Celestial Emerald Pendant" },
-  { src: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=800&auto=format&fit=crop", alt: "Aura Silver Choker" },
-  { src: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?q=80&w=800&auto=format&fit=crop", alt: "Lumina Eternity Band" },
-  { src: "https://images.unsplash.com/photo-1600003014755-ba31aa59c4b6?q=80&w=800&auto=format&fit=crop", alt: "Verdant Royal Solitaire" },
-  { src: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?q=80&w=800&auto=format&fit=crop", alt: "Sovereign Sculpted Cuff" },
-  { src: "https://images.unsplash.com/photo-1630019852942-f89202989a59?q=80&w=800&auto=format&fit=crop", alt: "Imperial Drop Earrings" },
-  { src: "https://images.unsplash.com/photo-1583946099379-f9c9cb8bc030?q=80&w=800&auto=format&fit=crop", alt: "Midnight Filigree Stud" },
-  { src: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=800&auto=format&fit=crop", alt: "Dew Droplet Aquamarine" },
-  { src: "https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?q=80&w=800&auto=format&fit=crop", alt: "Lumina Tennis Bracelet" },
+  { src: "/images/custom/img1.jpeg", alt: "Vici Obsidian Signet Ring" },
+  { src: "/images/custom/img2.jpeg", alt: "Celestial Emerald Pendant" },
+  { src: "/images/custom/img3.jpeg", alt: "Aura Silver Choker" },
+  { src: "/images/custom/img4.jpeg", alt: "Lumina Eternity Band" },
+  { src: "/images/custom/img5.jpeg", alt: "Verdant Royal Solitaire" },
+  { src: "/images/custom/img6.jpeg", alt: "Sovereign Sculpted Cuff" },
+  { src: "/images/custom/img7.jpeg", alt: "Imperial Drop Earrings" },
+  { src: "/images/custom/img8.jpeg", alt: "Midnight Filigree Stud" },
+  { src: "/images/custom/img9.jpeg", alt: "Dew Droplet Aquamarine" },
+  { src: "/images/custom/img10.jpeg", alt: "Lumina Tennis Bracelet" },
+  { src: "/images/custom/img11.jpeg", alt: "Helio Noir Ring" },
+  { src: "/images/custom/img12.jpeg", alt: "Stella Link Choker" },
+  { src: "/images/custom/img13.jpeg", alt: "Astral Emerald Pendant" },
+  { src: "/images/custom/img14.jpeg", alt: "Solstice Geometric Drops" },
+  { src: "/images/custom/img15.jpeg", alt: "Bespoke Sculpted Band" },
+  { src: "/images/custom/img16.jpeg", alt: "Vici Signature Signet" },
+  { src: "/images/custom/img17.jpeg", alt: "Chrono Geometric Signet" },
+  { src: "/images/custom/img18.jpeg", alt: "Solstice Radiant Studs" },
+  { src: "/images/custom/img19.jpeg", alt: "Nova Eternity Band" },
+  { src: "/images/custom/img20.jpeg", alt: "Zenith Statement Pendant" },
 ];
 
 export default function HomePage() {
-  const [entered, setEntered] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
   const heroSectionRef = useRef<HTMLElement | null>(null);
 
@@ -46,7 +57,6 @@ export default function HomePage() {
       const vini = document.querySelector(".brand-group-vini");
       const vici = document.querySelector(".brand-group-vici");
       const vidi = document.querySelector(".brand-group-vidi");
-      const heroNote = document.querySelector(".hero-note");
       const heroRing = document.querySelector(".hero-ring-container");
       const heroCta = document.querySelector(".hero-cta-container");
 
@@ -83,15 +93,6 @@ export default function HomePage() {
         });
       }
 
-      if (heroNote) {
-        gsap.to(heroNote, {
-          opacity: Math.max(0, 1 - scrollY / (windowHeight * 0.45)),
-          y: scrollY * 0.25,
-          duration: 0.15,
-          overwrite: "auto",
-        });
-      }
-
       if (heroRing) {
         gsap.to(heroRing, {
           y: scrollY * 0.16,
@@ -111,7 +112,7 @@ export default function HomePage() {
         });
       }
 
-      // 3. Carousel Showcase header subtle elevation on approach
+      // 3. Carousel Showcase header elevation on approach
       const carouselHeader = document.querySelector(".carousel-header");
       if (carouselHeader) {
         const rect = carouselHeader.getBoundingClientRect();
@@ -125,7 +126,6 @@ export default function HomePage() {
           });
         }
       }
-
     });
 
     return () => {
@@ -134,7 +134,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className="luxury-page">
+    <main className="luxury-page bg-[#050505]">
       {/* Sleek Luminous Scroll Progress Indicator */}
       <div 
         aria-hidden="true" 
@@ -152,75 +152,293 @@ export default function HomePage() {
         {/* Hero Section */}
         <section
           ref={heroSectionRef}
-          className="relative flex items-start justify-center min-h-[92vh] px-[3vw] pt-2 overflow-hidden"
+          className="relative flex items-start justify-center min-h-[96vh] px-[3vw] pt-2 overflow-hidden"
         >
-          {/* Light Green Pattern & Gradient Atelier Backdrop for VINI VICI VIDI */}
+          {/* Dynamic Layered WebGL Shader & Architectural Diamond Lattice Backdrop */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 pointer-events-none -z-10"
-            style={{
-              background: `
-                radial-gradient(ellipse 95% 75% at 50% 48%, rgba(230, 242, 234, 0.9) 0%, rgba(215, 235, 225, 0.55) 45%, rgba(248, 247, 244, 0.95) 100%),
-                radial-gradient(circle at 18% 25%, rgba(31, 122, 92, 0.14) 0%, transparent 45%),
-                radial-gradient(circle at 82% 70%, rgba(11, 74, 59, 0.12) 0%, transparent 45%),
-                repeating-linear-gradient(45deg, rgba(11, 74, 59, 0.035) 0, rgba(11, 74, 59, 0.035) 1px, transparent 0, transparent 28px),
-                repeating-linear-gradient(-45deg, rgba(11, 74, 59, 0.035) 0, rgba(11, 74, 59, 0.035) 1px, transparent 0, transparent 28px)
-              `,
-            }}
+            className="absolute inset-0 pointer-events-none -z-10 overflow-hidden"
           >
-            {/* Fine emerald radial wash */}
-            <div className="absolute inset-0 bg-radial from-transparent via-[#E6F2EA]/20 to-[#F8F7F4]/70 pointer-events-none" />
+            {/* Live Animated WebGL Fluid Shader Background */}
+            <div className="absolute inset-0 opacity-85">
+              <ShaderBackground
+                className="w-full h-full"
+                colors={[
+                  [0.92, 0.97, 0.94], // Luminous Ivory / Mint
+                  [0.78, 0.92, 0.86], // Pale Emerald Soft Mint
+                  [0.42, 0.76, 0.62], // Soft Jade Green
+                  [0.10, 0.45, 0.32], // Deep Emerald Green
+                  [0.03, 0.18, 0.12], // Dark Forest Green
+                  [0.95, 0.98, 0.96], // Pure Silver White
+                  [1.00, 1.00, 1.00],
+                  [1.00, 1.00, 1.00],
+                ]}
+                colorCount={6}
+              />
+            </div>
+
+            {/* Glowing Pulsating Emerald Aurora Flares */}
+            <div className="absolute -top-32 -left-32 w-[550px] h-[550px] rounded-full bg-gradient-to-br from-[#1fe0bb]/25 to-emerald-600/10 blur-[100px] animate-pulse pointer-events-none" />
+            <div className="absolute -bottom-40 -right-32 w-[600px] h-[600px] rounded-full bg-gradient-to-tl from-[#0B4A3B]/30 via-emerald-500/15 to-transparent blur-[120px] pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] rounded-full bg-white/40 blur-[90px] pointer-events-none" />
+
+            {/* High-Definition Diamond Lattice Filigree SVG Overlay */}
+            <svg className="absolute inset-0 w-full h-full opacity-25" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="hero-jewelry-lattice" width="80" height="80" patternUnits="userSpaceOnUse">
+                  <polygon points="40,4 76,40 40,76 4,40" fill="none" stroke="#0B4A3B" strokeWidth="1.2" opacity="0.35" />
+                  <polygon points="40,18 62,40 40,62 18,40" fill="none" stroke="#0B4A3B" strokeWidth="0.8" opacity="0.25" />
+                  <line x1="0" y1="0" x2="80" y2="80" stroke="#0B4A3B" strokeWidth="0.5" opacity="0.2" />
+                  <line x1="80" y1="0" x2="0" y2="80" stroke="#0B4A3B" strokeWidth="0.5" opacity="0.2" />
+                  <line x1="40" y1="28" x2="40" y2="52" stroke="#0B4A3B" strokeWidth="1.4" opacity="0.4" />
+                  <line x1="28" y1="40" x2="52" y2="40" stroke="#0B4A3B" strokeWidth="1.4" opacity="0.4" />
+                  <circle cx="40" cy="40" r="2.5" fill="#0B4A3B" opacity="0.5" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#hero-jewelry-lattice)" />
+            </svg>
+
+            {/* Soft Radial Vignette for Perfect Contrast */}
+            <div className="absolute inset-0 bg-radial from-transparent via-emerald-950/5 to-black/35 pointer-events-none" />
           </div>
 
           <div className="relative w-full max-w-[1700px] min-h-[90vh] flex items-start justify-center pt-4">
-            <div className="hero-note absolute left-[4.5%] bottom-[16%] flex flex-col gap-2 max-w-[14rem] text-[#2B2B2E] uppercase tracking-[0.35em] text-[0.6rem] z-5">
-              <span className="font-semibold text-[#0B4A3B] tracking-[0.4em]">925 STERLING SILVER</span>
-              <span className="text-[0.68rem] tracking-[0.28em] text-[#9CA0A6]">FACETED ONYX & DIAMOND</span>
-            </div>
-
-            {/* VINI VICI VIDI Branding in Deep Emerald */}
+            {/* Pure VINI VICI VIDI Branding with Shiny Metallic Silver Accents on Letter Corners */}
             <div className="absolute inset-0 z-2 w-full h-full uppercase pointer-events-none font-display">
-              <div className="brand-group-vini absolute top-[3%] left-[3%] flex flex-col items-start gap-1.5 z-1">
-                <div className="flex items-center gap-3 text-[0.65rem] tracking-[0.25em] text-[#0B4A3B]">
-                  <span className="font-serif italic text-sm text-[#1F7A5C]">I</span>
-                  <span>INCEPTION</span>
-                  <div className="w-10 h-[1px] bg-gradient-to-r from-[#0B4A3B] to-transparent" />
-                </div>
-                <span className="text-[clamp(5.5rem,13vw,19rem)] font-extrabold leading-[0.88] tracking-normal text-[#0B4A3B]">VINI</span>
-                <span className="text-[0.62rem] tracking-[0.32em] text-[#9CA0A6]">ÉDITION STERLING</span>
+              {/* VINI (Top Left with Letter Corner Accents) */}
+              <div className="brand-group-vini absolute top-[4%] left-[4%] flex items-center z-1 text-[clamp(6rem,14vw,20rem)] font-black leading-[0.88] tracking-tight text-[#0B4A3B] select-none">
+                {/* V */}
+                <span className="relative inline-block">
+                  <img
+                    src="/images/silver-corner-tl.png"
+                    alt=""
+                    className="absolute -top-[14%] -left-[18%] w-[52%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  <img
+                    src="/images/silver-corner-tr.png"
+                    alt=""
+                    className="absolute -top-[14%] -right-[16%] w-[48%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  <img
+                    src="/images/silver-corner-bl.png"
+                    alt=""
+                    className="absolute -bottom-[16%] left-[32%] w-[45%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  V
+                </span>
+
+                {/* I */}
+                <span className="relative inline-block">
+                  <img
+                    src="/images/silver-corner-tl.png"
+                    alt=""
+                    className="absolute -top-[14%] -left-[30%] w-[90%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  <img
+                    src="/images/silver-corner-br.png"
+                    alt=""
+                    className="absolute -bottom-[14%] -right-[30%] w-[90%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  I
+                </span>
+
+                {/* N */}
+                <span className="relative inline-block">
+                  <img
+                    src="/images/silver-corner-tl.png"
+                    alt=""
+                    className="absolute -top-[14%] -left-[16%] w-[46%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  <img
+                    src="/images/silver-corner-br.png"
+                    alt=""
+                    className="absolute -bottom-[14%] -right-[16%] w-[46%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  N
+                </span>
+
+                {/* I */}
+                <span className="relative inline-block">
+                  <img
+                    src="/images/silver-corner-tr.png"
+                    alt=""
+                    className="absolute -top-[14%] -right-[30%] w-[90%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  <img
+                    src="/images/silver-corner-bl.png"
+                    alt=""
+                    className="absolute -bottom-[14%] -left-[30%] w-[90%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  I
+                </span>
               </div>
 
-              <div className="brand-group-vici absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center z-1">
-                <span className="text-[clamp(10rem,24vw,36rem)] font-extrabold leading-[0.88] tracking-normal text-[#0B4A3B]/95">VICI</span>
-                <div className="absolute w-[140%] h-[140%] rounded-full bg-radial from-[#1F7A5C]/15 via-[#0B4A3B]/5 to-transparent blur-[50px] pointer-events-none -z-1" />
+              {/* VICI (Centerpiece with Shiny Metallic Letter Corners) */}
+              <div className="brand-group-vici absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center z-1 text-[clamp(10rem,24vw,36rem)] font-black leading-[0.88] tracking-tight text-[#0B4A3B] select-none">
+                {/* V */}
+                <span className="relative inline-block">
+                  <img
+                    src="/images/silver-corner-tl.png"
+                    alt=""
+                    className="absolute -top-[15%] -left-[18%] w-[52%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
+                  />
+                  <img
+                    src="/images/silver-corner-tr.png"
+                    alt=""
+                    className="absolute -top-[15%] -right-[16%] w-[48%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
+                  />
+                  <img
+                    src="/images/silver-corner-bl.png"
+                    alt=""
+                    className="absolute -bottom-[18%] left-[28%] w-[46%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
+                  />
+                  V
+                </span>
+
+                {/* I */}
+                <span className="relative inline-block">
+                  <img
+                    src="/images/silver-corner-tl.png"
+                    alt=""
+                    className="absolute -top-[16%] -left-[35%] w-[95%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
+                  />
+                  <img
+                    src="/images/silver-corner-br.png"
+                    alt=""
+                    className="absolute -bottom-[16%] -right-[35%] w-[95%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
+                  />
+                  I
+                </span>
+
+                {/* C */}
+                <span className="relative inline-block">
+                  <img
+                    src="/images/silver-corner-tr.png"
+                    alt=""
+                    className="absolute -top-[12%] right-[2%] w-[48%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
+                  />
+                  <img
+                    src="/images/silver-corner-br.png"
+                    alt=""
+                    className="absolute -bottom-[14%] right-[2%] w-[48%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
+                  />
+                  C
+                </span>
+
+                {/* I */}
+                <span className="relative inline-block">
+                  <img
+                    src="/images/silver-corner-tr.png"
+                    alt=""
+                    className="absolute -top-[16%] -right-[35%] w-[95%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
+                  />
+                  <img
+                    src="/images/silver-corner-bl.png"
+                    alt=""
+                    className="absolute -bottom-[16%] -left-[35%] w-[95%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
+                  />
+                  I
+                </span>
+
+                <div className="absolute w-[150%] h-[150%] rounded-full bg-radial from-[#1F7A5C]/20 via-[#0B4A3B]/8 to-transparent blur-[70px] pointer-events-none -z-1" />
               </div>
 
-              <div className="brand-group-vidi absolute bottom-[5%] right-[3%] flex flex-col items-end gap-1.5 z-1">
-                <div className="flex items-center gap-3 text-[0.65rem] tracking-[0.25em] text-[#0B4A3B]">
-                  <div className="w-10 h-[1px] bg-gradient-to-l from-[#0B4A3B] to-transparent" />
-                  <span>APOGÉE</span>
-                  <span className="font-serif italic text-sm text-[#1F7A5C]">III</span>
-                </div>
-                <span className="text-[clamp(5.5rem,13vw,19rem)] font-extrabold leading-[0.88] tracking-normal text-[#0B4A3B]">VIDI</span>
-                <span className="text-[0.62rem] tracking-[0.32em] text-[#9CA0A6] text-right">
-                  PARIS • 48.8566° N, 2.3522° E
+              {/* VIDI (Bottom Right with Letter Corner Accents) */}
+              <div className="brand-group-vidi absolute bottom-[6%] right-[4%] flex items-center z-1 text-[clamp(6rem,14vw,20rem)] font-black leading-[0.88] tracking-tight text-[#0B4A3B] select-none">
+                {/* V */}
+                <span className="relative inline-block">
+                  <img
+                    src="/images/silver-corner-tl.png"
+                    alt=""
+                    className="absolute -top-[14%] -left-[18%] w-[52%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  <img
+                    src="/images/silver-corner-tr.png"
+                    alt=""
+                    className="absolute -top-[14%] -right-[16%] w-[48%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  <img
+                    src="/images/silver-corner-bl.png"
+                    alt=""
+                    className="absolute -bottom-[16%] left-[32%] w-[45%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  V
+                </span>
+
+                {/* I */}
+                <span className="relative inline-block">
+                  <img
+                    src="/images/silver-corner-tl.png"
+                    alt=""
+                    className="absolute -top-[14%] -left-[30%] w-[90%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  <img
+                    src="/images/silver-corner-br.png"
+                    alt=""
+                    className="absolute -bottom-[14%] -right-[30%] w-[90%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  I
+                </span>
+
+                {/* D */}
+                <span className="relative inline-block">
+                  <img
+                    src="/images/silver-corner-tl.png"
+                    alt=""
+                    className="absolute -top-[14%] -left-[18%] w-[48%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  <img
+                    src="/images/silver-corner-bl.png"
+                    alt=""
+                    className="absolute -bottom-[14%] -left-[18%] w-[48%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  <img
+                    src="/images/silver-corner-tr.png"
+                    alt=""
+                    className="absolute top-[28%] -right-[16%] w-[40%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  D
+                </span>
+
+                {/* I */}
+                <span className="relative inline-block">
+                  <img
+                    src="/images/silver-corner-tr.png"
+                    alt=""
+                    className="absolute -top-[14%] -right-[30%] w-[90%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  <img
+                    src="/images/silver-corner-bl.png"
+                    alt=""
+                    className="absolute -bottom-[14%] -left-[30%] w-[90%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
+                  />
+                  I
                 </span>
               </div>
             </div>
 
-            {/* 3D Ring Hero Model - Made significantly larger */}
+            {/* 3D Ring Hero Model - Interactive & Centered */}
             <div className="hero-ring-container absolute top-[52%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[clamp(65rem,90vw,120rem)] h-[clamp(40rem,65vh,70rem)] flex items-center justify-center z-20 pointer-events-none will-change-transform">
               <GlbRingScene />
             </div>
 
             {/* Deep Emerald CTA Button in Hero */}
             <div className="hero-cta-container absolute bottom-10 left-1/2 -translate-x-1/2 z-30 pointer-events-auto">
-              <a href="#contact" className="btn-emerald inline-flex items-center gap-3">
-                <span>Contact Concierge</span>
-                <ArrowRight className="w-4 h-4 text-[#E6F2EA]" />
+              <a
+                href="#showcase"
+                className="group relative inline-flex items-center gap-3 px-9 py-4 rounded-full bg-[#0B4A3B] text-white font-semibold text-xs tracking-[0.22em] uppercase shadow-2xl shadow-[#0B4A3B]/45 hover:bg-[#1F7A5C] hover:scale-105 transition-all duration-300 border border-[#E6F2EA]/30"
+              >
+                <Sparkles className="w-4 h-4 text-[#1fe0bb] animate-pulse" />
+                <span>Explore Showcase</span>
+                <ArrowRight className="w-4 h-4 text-[#E6F2EA] group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           </div>
+        </section>
+
+        {/* 3D Stacked Card Carousel Section */}
+        <section id="showcase" className="relative w-full overflow-hidden">
+          <CarouselStacked />
         </section>
 
         {/* 3D Infinite Photography Gallery */}

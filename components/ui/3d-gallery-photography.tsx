@@ -396,7 +396,8 @@ function GalleryScene({
 				mesh.position.set(plane.x, plane.y, worldZ);
 
 				if (texture && texture.image) {
-					const aspect = texture.image.width / texture.image.height;
+					const img = texture.image as any;
+					const aspect = (img.width && img.height) ? img.width / img.height : 1;
 					const scaleX = aspect > 1 ? 2 * aspect : 2;
 					const scaleY = aspect > 1 ? 2 : 2 / aspect;
 					mesh.scale.set(scaleX, scaleY, 1);

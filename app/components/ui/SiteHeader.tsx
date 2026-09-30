@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search, Heart, User, Menu, X, MessageCircle } from "lucide-react";
+import { useWishlist } from "@/app/context/WishlistContext";
 
 function HeaderJewelryPattern({ patternId }: { patternId: string }) {
   return (
@@ -43,6 +44,8 @@ export function SiteHeader() {
     width: 0,
     opacity: 0,
   });
+
+  const { wishlistCount, setIsDrawerOpen } = useWishlist();
 
   return (
     <header className="site-header sticky top-0 z-40 px-[3.2vw] pt-5">
@@ -185,13 +188,20 @@ export function SiteHeader() {
             </button>
             <button
               aria-label="Wishlist"
+              onClick={() => setIsDrawerOpen(true)}
               className="relative w-9 h-9 rounded-full bg-white text-[#0B4A3B] flex items-center justify-center hover:bg-[#E6F2EA] hover:text-[#1F7A5C] hover:scale-110 shadow-md transition-all duration-200"
             >
-              <Heart className="w-4 h-4" />
-              <span className="absolute top-1 right-1 flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1fe0bb] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1fe0bb]" />
-              </span>
+              <Heart className={`w-4 h-4 ${wishlistCount > 0 ? "fill-rose-500 stroke-rose-500" : ""}`} />
+              {wishlistCount > 0 ? (
+                <span className="absolute -top-1 -right-1 bg-rose-500 text-white text-[0.58rem] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-md animate-pulse">
+                  {wishlistCount}
+                </span>
+              ) : (
+                <span className="absolute top-1 right-1 flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1fe0bb] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1fe0bb]" />
+                </span>
+              )}
             </button>
             <button
               aria-label="Account"
@@ -203,10 +213,11 @@ export function SiteHeader() {
 
           <button
             type="button"
+            onClick={() => setIsDrawerOpen(true)}
             className="hidden sm:inline-flex px-4 py-2 rounded-full bg-white text-[#0B4A3B] font-semibold hover:bg-[#E6F2EA] hover:text-[#1F7A5C] transition-all tracking-[0.2em] shadow-md items-center justify-center gap-2 text-xs"
           >
-            <span>CART</span>
-            <span className="bg-[#0B4A3B] text-[#E6F2EA] px-1.5 py-0.5 rounded-full text-[0.6rem] font-bold">0</span>
+            <span>FAVORITES</span>
+            <span className="bg-[#0B4A3B] text-[#E6F2EA] px-1.5 py-0.5 rounded-full text-[0.6rem] font-bold">{wishlistCount}</span>
           </button>
 
           <button
@@ -258,30 +269,26 @@ export function SiteHeader() {
             <div className="flex items-center justify-between pt-6 border-t border-[#E6F2EA]/20">
               <div className="flex items-center gap-3">
                 <button
-                  aria-label="Search"
-                  className="w-10 h-10 rounded-full bg-white text-[#0B4A3B] flex items-center justify-center hover:bg-[#E6F2EA] hover:text-[#1F7A5C] shadow-md transition-all"
-                >
-                  <Search className="w-4 h-4" />
-                </button>
-                <button
                   aria-label="Wishlist"
-                  className="w-10 h-10 rounded-full bg-white text-[#0B4A3B] flex items-center justify-center hover:bg-[#E6F2EA] hover:text-[#1F7A5C] shadow-md transition-all"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setIsDrawerOpen(true);
+                  }}
+                  className="w-10 h-10 rounded-full bg-white text-[#0B4A3B] flex items-center justify-center hover:bg-[#E6F2EA] hover:text-[#1F7A5C] shadow-md transition-all relative"
                 >
-                  <Heart className="w-4 h-4" />
-                </button>
-                <button
-                  aria-label="Account"
-                  className="w-10 h-10 rounded-full bg-white text-[#0B4A3B] flex items-center justify-center hover:bg-[#E6F2EA] hover:text-[#1F7A5C] shadow-md transition-all"
-                >
-                  <User className="w-4 h-4" />
+                  <Heart className={`w-4 h-4 ${wishlistCount > 0 ? "fill-rose-500 stroke-rose-500" : ""}`} />
                 </button>
               </div>
               <button
                 type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setIsDrawerOpen(true);
+                }}
                 className="px-5 py-2.5 rounded-full bg-white text-[#0B4A3B] font-semibold hover:bg-[#E6F2EA] hover:text-[#1F7A5C] transition-all tracking-[0.2em] shadow-md flex items-center justify-center gap-2 text-xs"
               >
-                <span>Cart</span>
-                <span className="bg-[#0B4A3B] text-[#E6F2EA] px-1.5 py-0.5 rounded-full text-[0.6rem] font-bold">0</span>
+                <span>Favorites</span>
+                <span className="bg-[#0B4A3B] text-[#E6F2EA] px-1.5 py-0.5 rounded-full text-[0.6rem] font-bold">{wishlistCount}</span>
               </button>
             </div>
           </div>

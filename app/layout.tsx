@@ -6,6 +6,8 @@ import {
   Bebas_Neue,
 } from "next/font/google";
 import "./globals.css";
+import { WishlistProvider } from "@/app/context/WishlistContext";
+import { WishlistDrawer } from "@/app/components/ui/WishlistDrawer";
 
 const inter = Inter({
   variable: "--font-ui",
@@ -31,18 +33,21 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "VINI VICI VIDI | Silver Atelier",
+  title: "VINI VICI VIDI | Pure 925 Silver Atelier",
   description: "Cinematic silver jewellery showroom for VINI VICI VIDI.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
       className={`${inter.variable} ${cormorant.variable} ${montserrat.variable} ${bebasNeue.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#050505] text-[#f2f2f2]">
-        {children}
+        <WishlistProvider>
+          {children}
+          <WishlistDrawer />
+        </WishlistProvider>
       </body>
     </html>
   );
