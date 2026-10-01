@@ -12,7 +12,7 @@ import { ShaderBackground } from "@/components/ui/adisyon-shader";
 import { setupLenis } from "@/app/animations/scroll/lenis";
 import { gsap } from "gsap";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { LetterSilverCorner } from "@/app/components/ui/LetterSilverCorner";
+import { SilverCornerLetter } from "@/app/components/ui/SilverCornerLetter";
 
 const galleryImages = [
   { src: "/images/custom/img1.jpeg", alt: "Vici Obsidian Signet Ring" },
@@ -207,107 +207,28 @@ export default function HomePage() {
             {/* Pure VINI VICI VIDI Branding with Shiny Metallic Silver Corners on Letters */}
             <div className="absolute inset-0 z-2 w-full h-full uppercase pointer-events-none font-display">
               {/* VINI (Top Left) */}
-              <div className="brand-group-vini absolute top-[4%] left-[4%] flex items-center z-1 text-[clamp(6rem,14vw,20rem)] font-black leading-[0.88] tracking-tight text-[#0B4A3B] select-none">
-                {/* V */}
-                <span className="relative inline-block">
-                  <LetterSilverCorner position="tl" />
-                  <LetterSilverCorner position="tr" />
-                  <LetterSilverCorner position="v-bottom" />
-                  V
-                </span>
-
-                {/* I */}
-                <span className="relative inline-block">
-                  <LetterSilverCorner position="tl" />
-                  <LetterSilverCorner position="br" />
-                  I
-                </span>
-
-                {/* N */}
-                <span className="relative inline-block">
-                  <LetterSilverCorner position="tl" />
-                  <LetterSilverCorner position="bl" />
-                  <LetterSilverCorner position="tr" />
-                  <LetterSilverCorner position="br" />
-                  N
-                </span>
-
-                {/* I */}
-                <span className="relative inline-block">
-                  <LetterSilverCorner position="tr" />
-                  <LetterSilverCorner position="bl" />
-                  I
-                </span>
+              <div className="brand-group-vini absolute top-[4%] left-[4%] flex items-center z-1 text-[clamp(6rem,14vw,20rem)] font-black leading-[0.88] tracking-tight select-none">
+                <SilverCornerLetter char="V" />
+                <SilverCornerLetter char="I" />
+                <SilverCornerLetter char="N" />
+                <SilverCornerLetter char="I" />
               </div>
 
               {/* VICI (Centerpiece) */}
-              <div className="brand-group-vici absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center z-1 text-[clamp(10rem,24vw,36rem)] font-black leading-[0.88] tracking-tight text-[#0B4A3B] select-none">
-                {/* V */}
-                <span className="relative inline-block">
-                  <LetterSilverCorner position="tl" isCenterpiece />
-                  <LetterSilverCorner position="tr" isCenterpiece />
-                  <LetterSilverCorner position="v-bottom" isCenterpiece />
-                  V
-                </span>
-
-                {/* I */}
-                <span className="relative inline-block">
-                  <LetterSilverCorner position="tl" isCenterpiece />
-                  <LetterSilverCorner position="br" isCenterpiece />
-                  I
-                </span>
-
-                {/* C */}
-                <span className="relative inline-block">
-                  <LetterSilverCorner position="tl" isCenterpiece />
-                  <LetterSilverCorner position="tr" isCenterpiece />
-                  <LetterSilverCorner position="bl" isCenterpiece />
-                  <LetterSilverCorner position="br" isCenterpiece />
-                  C
-                </span>
-
-                {/* I */}
-                <span className="relative inline-block">
-                  <LetterSilverCorner position="tr" isCenterpiece />
-                  <LetterSilverCorner position="bl" isCenterpiece />
-                  I
-                </span>
-
+              <div className="brand-group-vici absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center z-1 text-[clamp(10rem,24vw,36rem)] font-black leading-[0.88] tracking-tight select-none">
+                <SilverCornerLetter char="V" isCenterpiece />
+                <SilverCornerLetter char="I" isCenterpiece />
+                <SilverCornerLetter char="C" isCenterpiece />
+                <SilverCornerLetter char="I" isCenterpiece />
                 <div className="absolute w-[150%] h-[150%] rounded-full bg-radial from-[#1F7A5C]/20 via-[#0B4A3B]/8 to-transparent blur-[70px] pointer-events-none -z-1" />
               </div>
 
               {/* VIDI (Bottom Right) */}
-              <div className="brand-group-vidi absolute bottom-[6%] right-[4%] flex items-center z-1 text-[clamp(6rem,14vw,20rem)] font-black leading-[0.88] tracking-tight text-[#0B4A3B] select-none">
-                {/* V */}
-                <span className="relative inline-block">
-                  <LetterSilverCorner position="tl" />
-                  <LetterSilverCorner position="tr" />
-                  <LetterSilverCorner position="v-bottom" />
-                  V
-                </span>
-
-                {/* I */}
-                <span className="relative inline-block">
-                  <LetterSilverCorner position="tl" />
-                  <LetterSilverCorner position="br" />
-                  I
-                </span>
-
-                {/* D */}
-                <span className="relative inline-block">
-                  <LetterSilverCorner position="tl" />
-                  <LetterSilverCorner position="bl" />
-                  <LetterSilverCorner position="tr" />
-                  <LetterSilverCorner position="br" />
-                  D
-                </span>
-
-                {/* I */}
-                <span className="relative inline-block">
-                  <LetterSilverCorner position="tr" />
-                  <LetterSilverCorner position="bl" />
-                  I
-                </span>
+              <div className="brand-group-vidi absolute bottom-[6%] right-[4%] flex items-center z-1 text-[clamp(6rem,14vw,20rem)] font-black leading-[0.88] tracking-tight select-none">
+                <SilverCornerLetter char="V" />
+                <SilverCornerLetter char="I" />
+                <SilverCornerLetter char="D" />
+                <SilverCornerLetter char="I" />
               </div>
             </div>
 
