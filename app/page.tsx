@@ -203,217 +203,22 @@ export default function HomePage() {
           </div>
 
           <div className="relative w-full max-w-[1700px] min-h-[90vh] flex items-start justify-center pt-4">
-            {/* Pure VINI VICI VIDI Branding with Shiny Metallic Silver Accents on Letter Corners */}
+            {/* Pure VINI VICI VIDI Branding */}
             <div className="absolute inset-0 z-2 w-full h-full uppercase pointer-events-none font-display">
-              {/* VINI (Top Left with Letter Corner Accents) */}
+              {/* VINI (Top Left) */}
               <div className="brand-group-vini absolute top-[4%] left-[4%] flex items-center z-1 text-[clamp(6rem,14vw,20rem)] font-black leading-[0.88] tracking-tight text-[#0B4A3B] select-none">
-                {/* V */}
-                <span className="relative inline-block">
-                  <img
-                    src="/images/silver-corner-tl.png"
-                    alt=""
-                    className="absolute -top-[14%] -left-[18%] w-[52%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  <img
-                    src="/images/silver-corner-tr.png"
-                    alt=""
-                    className="absolute -top-[14%] -right-[16%] w-[48%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  <img
-                    src="/images/silver-corner-bl.png"
-                    alt=""
-                    className="absolute -bottom-[16%] left-[32%] w-[45%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  V
-                </span>
-
-                {/* I */}
-                <span className="relative inline-block">
-                  <img
-                    src="/images/silver-corner-tl.png"
-                    alt=""
-                    className="absolute -top-[14%] -left-[30%] w-[90%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  <img
-                    src="/images/silver-corner-br.png"
-                    alt=""
-                    className="absolute -bottom-[14%] -right-[30%] w-[90%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  I
-                </span>
-
-                {/* N */}
-                <span className="relative inline-block">
-                  <img
-                    src="/images/silver-corner-tl.png"
-                    alt=""
-                    className="absolute -top-[14%] -left-[16%] w-[46%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  <img
-                    src="/images/silver-corner-br.png"
-                    alt=""
-                    className="absolute -bottom-[14%] -right-[16%] w-[46%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  N
-                </span>
-
-                {/* I */}
-                <span className="relative inline-block">
-                  <img
-                    src="/images/silver-corner-tr.png"
-                    alt=""
-                    className="absolute -top-[14%] -right-[30%] w-[90%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  <img
-                    src="/images/silver-corner-bl.png"
-                    alt=""
-                    className="absolute -bottom-[14%] -left-[30%] w-[90%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  I
-                </span>
+                VINI
               </div>
 
-              {/* VICI (Centerpiece with Shiny Metallic Letter Corners) */}
+              {/* VICI (Centerpiece) */}
               <div className="brand-group-vici absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center z-1 text-[clamp(10rem,24vw,36rem)] font-black leading-[0.88] tracking-tight text-[#0B4A3B] select-none">
-                {/* V */}
-                <span className="relative inline-block">
-                  <img
-                    src="/images/silver-corner-tl.png"
-                    alt=""
-                    className="absolute -top-[15%] -left-[18%] w-[52%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
-                  />
-                  <img
-                    src="/images/silver-corner-tr.png"
-                    alt=""
-                    className="absolute -top-[15%] -right-[16%] w-[48%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
-                  />
-                  <img
-                    src="/images/silver-corner-bl.png"
-                    alt=""
-                    className="absolute -bottom-[18%] left-[28%] w-[46%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
-                  />
-                  V
-                </span>
-
-                {/* I */}
-                <span className="relative inline-block">
-                  <img
-                    src="/images/silver-corner-tl.png"
-                    alt=""
-                    className="absolute -top-[16%] -left-[35%] w-[95%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
-                  />
-                  <img
-                    src="/images/silver-corner-br.png"
-                    alt=""
-                    className="absolute -bottom-[16%] -right-[35%] w-[95%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
-                  />
-                  I
-                </span>
-
-                {/* C */}
-                <span className="relative inline-block">
-                  <img
-                    src="/images/silver-corner-tr.png"
-                    alt=""
-                    className="absolute -top-[12%] right-[2%] w-[48%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
-                  />
-                  <img
-                    src="/images/silver-corner-br.png"
-                    alt=""
-                    className="absolute -bottom-[14%] right-[2%] w-[48%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
-                  />
-                  C
-                </span>
-
-                {/* I */}
-                <span className="relative inline-block">
-                  <img
-                    src="/images/silver-corner-tr.png"
-                    alt=""
-                    className="absolute -top-[16%] -right-[35%] w-[95%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
-                  />
-                  <img
-                    src="/images/silver-corner-bl.png"
-                    alt=""
-                    className="absolute -bottom-[16%] -left-[35%] w-[95%] object-contain pointer-events-none drop-shadow-[0_6px_20px_rgba(255,255,255,0.85)] z-10"
-                  />
-                  I
-                </span>
-
+                VICI
                 <div className="absolute w-[150%] h-[150%] rounded-full bg-radial from-[#1F7A5C]/20 via-[#0B4A3B]/8 to-transparent blur-[70px] pointer-events-none -z-1" />
               </div>
 
-              {/* VIDI (Bottom Right with Letter Corner Accents) */}
+              {/* VIDI (Bottom Right) */}
               <div className="brand-group-vidi absolute bottom-[6%] right-[4%] flex items-center z-1 text-[clamp(6rem,14vw,20rem)] font-black leading-[0.88] tracking-tight text-[#0B4A3B] select-none">
-                {/* V */}
-                <span className="relative inline-block">
-                  <img
-                    src="/images/silver-corner-tl.png"
-                    alt=""
-                    className="absolute -top-[14%] -left-[18%] w-[52%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  <img
-                    src="/images/silver-corner-tr.png"
-                    alt=""
-                    className="absolute -top-[14%] -right-[16%] w-[48%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  <img
-                    src="/images/silver-corner-bl.png"
-                    alt=""
-                    className="absolute -bottom-[16%] left-[32%] w-[45%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  V
-                </span>
-
-                {/* I */}
-                <span className="relative inline-block">
-                  <img
-                    src="/images/silver-corner-tl.png"
-                    alt=""
-                    className="absolute -top-[14%] -left-[30%] w-[90%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  <img
-                    src="/images/silver-corner-br.png"
-                    alt=""
-                    className="absolute -bottom-[14%] -right-[30%] w-[90%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  I
-                </span>
-
-                {/* D */}
-                <span className="relative inline-block">
-                  <img
-                    src="/images/silver-corner-tl.png"
-                    alt=""
-                    className="absolute -top-[14%] -left-[18%] w-[48%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  <img
-                    src="/images/silver-corner-bl.png"
-                    alt=""
-                    className="absolute -bottom-[14%] -left-[18%] w-[48%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  <img
-                    src="/images/silver-corner-tr.png"
-                    alt=""
-                    className="absolute top-[28%] -right-[16%] w-[40%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  D
-                </span>
-
-                {/* I */}
-                <span className="relative inline-block">
-                  <img
-                    src="/images/silver-corner-tr.png"
-                    alt=""
-                    className="absolute -top-[14%] -right-[30%] w-[90%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  <img
-                    src="/images/silver-corner-bl.png"
-                    alt=""
-                    className="absolute -bottom-[14%] -left-[30%] w-[90%] object-contain pointer-events-none drop-shadow-[0_4px_14px_rgba(255,255,255,0.75)] z-10"
-                  />
-                  I
-                </span>
+                VIDI
               </div>
             </div>
 
