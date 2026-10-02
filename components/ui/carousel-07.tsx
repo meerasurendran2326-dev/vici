@@ -432,20 +432,20 @@ export const CarouselStacked = ({
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center w-full py-16 bg-[#F8F7F4] overflow-hidden select-none border-t border-b border-[#C6C9CC]/40",
+        "flex flex-col items-center justify-center w-full py-16 bg-transparent overflow-hidden select-none",
         className,
       )}
     >
       {/* Header section above carousel */}
       <div className="carousel-header flex flex-col items-center text-center max-w-xl px-4 mb-8">
-        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6F2EA] text-[#0B4A3B] text-[0.65rem] tracking-[0.25em] uppercase font-bold mb-3 border border-[#0B4A3B]/20">
-          <Sparkles className="w-3 h-3 text-[#1F7A5C]" />
+        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#0B4A3B]/80 text-[#1fe0bb] text-[0.65rem] tracking-[0.25em] uppercase font-bold mb-3 border border-[#1fe0bb]/30 backdrop-blur-md shadow-[0_0_15px_rgba(31,224,187,0.15)]">
+          <Sparkles className="w-3 h-3 text-[#1fe0bb]" />
           <span>Atelier Showcase</span>
         </div>
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-[#0B4A3B]">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white bg-gradient-to-b from-white via-[#E6F2EA] to-[#94A3B8] bg-clip-text text-transparent drop-shadow-md">
           Curated Silver Creations
         </h2>
-        <p className="text-xs sm:text-sm text-[#9CA0A6] mt-2 font-serif italic">
+        <p className="text-xs sm:text-sm text-[#A7F3D0]/80 mt-2 font-serif italic">
           Hover over any card or move your cursor across the showcase to browse smoothly.
         </p>
       </div>
@@ -493,7 +493,7 @@ export const CarouselStacked = ({
           onClick={handlePrev}
           onMouseEnter={handlePrev}
           aria-label="Previous slide"
-          className="p-3 rounded-full bg-[#FFFFFF] border border-[#C6C9CC] text-[#0B4A3B] hover:bg-[#0B4A3B] hover:text-[#FFFFFF] transition-all duration-300 shadow-sm hover:scale-110 active:scale-95 cursor-pointer"
+          className="p-3 rounded-full bg-[#0B4A3B]/80 border border-[#1fe0bb]/30 text-[#E6F2EA] hover:bg-[#1F7A5C] hover:text-white transition-all duration-300 shadow-lg shadow-[#021811]/60 hover:scale-110 active:scale-95 cursor-pointer backdrop-blur-md"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
@@ -509,8 +509,8 @@ export const CarouselStacked = ({
               className={cn(
                 "h-2 transition-all duration-300 rounded-full cursor-pointer",
                 currentIndex === i
-                  ? "w-8 bg-[#0B4A3B]"
-                  : "w-2 bg-[#C6C9CC] hover:bg-[#9CA0A6] hover:w-4",
+                  ? "w-8 bg-[#1fe0bb] shadow-[0_0_10px_#1fe0bb]"
+                  : "w-2 bg-white/25 hover:bg-white/50 hover:w-4",
               )}
             />
           ))}
@@ -521,7 +521,7 @@ export const CarouselStacked = ({
           onClick={handleNext}
           onMouseEnter={handleNext}
           aria-label="Next slide"
-          className="p-3 rounded-full bg-[#FFFFFF] border border-[#C6C9CC] text-[#0B4A3B] hover:bg-[#0B4A3B] hover:text-[#FFFFFF] transition-all duration-300 shadow-sm hover:scale-110 active:scale-95 cursor-pointer"
+          className="p-3 rounded-full bg-[#0B4A3B]/80 border border-[#1fe0bb]/30 text-[#E6F2EA] hover:bg-[#1F7A5C] hover:text-white transition-all duration-300 shadow-lg shadow-[#021811]/60 hover:scale-110 active:scale-95 cursor-pointer backdrop-blur-md"
         >
           <ChevronRight className="w-5 h-5" />
         </button>

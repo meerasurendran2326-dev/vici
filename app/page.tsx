@@ -9,10 +9,10 @@ import dynamic from "next/dynamic";
 import CarouselStacked from "@/components/ui/carousel-07";
 const InfiniteGallery = dynamic(() => import("@/components/ui/3d-gallery-photography"), { ssr: false });
 import { ShaderBackground } from "@/components/ui/adisyon-shader";
+import KineticGrid from "@/components/ui/kinetic-grid";
 import { setupLenis } from "@/app/animations/scroll/lenis";
 import { gsap } from "gsap";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { SilverCornerLetter } from "@/app/components/ui/SilverCornerLetter";
 
 const galleryImages = [
   { src: "/images/custom/img1.jpeg", alt: "Vici Obsidian Signet Ring" },
@@ -135,7 +135,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className="luxury-page bg-[#050505]">
+    <main className="luxury-page bg-gradient-to-b from-[#01140E] via-[#042E22] to-[#01120D] text-[#F8F7F4]">
       {/* Sleek Luminous Scroll Progress Indicator */}
       <div 
         aria-hidden="true" 
@@ -153,82 +153,91 @@ export default function HomePage() {
         {/* Hero Section */}
         <section
           ref={heroSectionRef}
-          className="relative flex items-start justify-center min-h-[96vh] px-[3vw] pt-2 overflow-hidden"
+          className="relative flex items-start justify-center min-h-[96vh] px-[3vw] pt-2 overflow-hidden bg-gradient-to-b from-[#011811]/90 via-[#02281D]/75 to-transparent"
         >
-          {/* Dynamic Layered WebGL Shader & Architectural Diamond Lattice Backdrop */}
+          {/* Interactive Kinetic Grid Background with Classy Shiny Green Shade & Metallic Silver Glow */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 pointer-events-none -z-10 overflow-hidden"
+            className="absolute inset-0 -z-10 overflow-hidden"
           >
-            {/* Live Animated WebGL Fluid Shader Background */}
-            <div className="absolute inset-0 opacity-85">
-              <ShaderBackground
-                className="w-full h-full"
-                colors={[
-                  [0.92, 0.97, 0.94], // Luminous Ivory / Mint
-                  [0.78, 0.92, 0.86], // Pale Emerald Soft Mint
-                  [0.42, 0.76, 0.62], // Soft Jade Green
-                  [0.10, 0.45, 0.32], // Deep Emerald Green
-                  [0.03, 0.18, 0.12], // Dark Forest Green
-                  [0.95, 0.98, 0.96], // Pure Silver White
-                  [1.00, 1.00, 1.00],
-                  [1.00, 1.00, 1.00],
-                ]}
-                colorCount={6}
-              />
-            </div>
+            <KineticGrid
+              globalColor="emerald-silver"
+              className="w-full h-full min-h-[96vh]"
+              canvasClassName="w-full h-full"
+              interactiveTargetRef={heroSectionRef}
+            />
 
-            {/* Glowing Pulsating Emerald Aurora Flares */}
-            <div className="absolute -top-32 -left-32 w-[550px] h-[550px] rounded-full bg-gradient-to-br from-[#1fe0bb]/25 to-emerald-600/10 blur-[100px] animate-pulse pointer-events-none" />
-            <div className="absolute -bottom-40 -right-32 w-[600px] h-[600px] rounded-full bg-gradient-to-tl from-[#0B4A3B]/30 via-emerald-500/15 to-transparent blur-[120px] pointer-events-none" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] rounded-full bg-white/40 blur-[90px] pointer-events-none" />
-
-            {/* High-Definition Diamond Lattice Filigree SVG Overlay */}
-            <svg className="absolute inset-0 w-full h-full opacity-25" xmlns="http://www.w3.org/2000/svg">
+            {/* Glowing Pulsating Emerald & Silver Ambient Flares */}
+            <div className="absolute -top-32 -left-32 w-[550px] h-[550px] rounded-full bg-gradient-to-br from-[#1fe0bb]/20 via-[#0B4A3B]/20 to-transparent blur-[110px] pointer-events-none" />
+            <div className="absolute -bottom-40 -right-32 w-[600px] h-[600px] rounded-full bg-gradient-to-tl from-[#021811] via-[#0B4A3B]/35 to-[#2fe4b6]/15 blur-[120px] pointer-events-none" />
+            {/* High-Definition Royal Diamond Lattice Filigree Pattern */}
+            <svg
+              className="absolute inset-0 w-full h-full opacity-25 pointer-events-none mix-blend-screen"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <defs>
-                <pattern id="hero-jewelry-lattice" width="80" height="80" patternUnits="userSpaceOnUse">
-                  <polygon points="40,4 76,40 40,76 4,40" fill="none" stroke="#0B4A3B" strokeWidth="1.2" opacity="0.35" />
-                  <polygon points="40,18 62,40 40,62 18,40" fill="none" stroke="#0B4A3B" strokeWidth="0.8" opacity="0.25" />
-                  <line x1="0" y1="0" x2="80" y2="80" stroke="#0B4A3B" strokeWidth="0.5" opacity="0.2" />
-                  <line x1="80" y1="0" x2="0" y2="80" stroke="#0B4A3B" strokeWidth="0.5" opacity="0.2" />
-                  <line x1="40" y1="28" x2="40" y2="52" stroke="#0B4A3B" strokeWidth="1.4" opacity="0.4" />
-                  <line x1="28" y1="40" x2="52" y2="40" stroke="#0B4A3B" strokeWidth="1.4" opacity="0.4" />
-                  <circle cx="40" cy="40" r="2.5" fill="#0B4A3B" opacity="0.5" />
+                <pattern
+                  id="hero-jewelry-pattern"
+                  width="72"
+                  height="72"
+                  patternUnits="userSpaceOnUse"
+                >
+                  {/* Outer Diamond Rhombus */}
+                  <polygon
+                    points="36,2 70,36 36,70 2,36"
+                    fill="none"
+                    stroke="#A7F3D0"
+                    strokeWidth="1.1"
+                    opacity="0.45"
+                  />
+                  {/* Inner Facet Rhombus */}
+                  <polygon
+                    points="36,14 58,36 36,58 14,36"
+                    fill="none"
+                    stroke="#E2E8F0"
+                    strokeWidth="0.8"
+                    opacity="0.35"
+                  />
+                  {/* Diagonal Axis Rays */}
+                  <line x1="0" y1="0" x2="72" y2="72" stroke="#34D399" strokeWidth="0.5" opacity="0.25" />
+                  <line x1="72" y1="0" x2="0" y2="72" stroke="#34D399" strokeWidth="0.5" opacity="0.25" />
+                  {/* Center Star Cross */}
+                  <line x1="36" y1="24" x2="36" y2="48" stroke="#FFFFFF" strokeWidth="1.2" opacity="0.5" />
+                  <line x1="24" y1="36" x2="48" y2="36" stroke="#FFFFFF" strokeWidth="1.2" opacity="0.5" />
+                  {/* Apex Micro Diamond Glints */}
+                  <circle cx="36" cy="36" r="2.2" fill="#FFFFFF" opacity="0.75" />
+                  <circle cx="0" cy="0" r="1.5" fill="#34D399" opacity="0.5" />
+                  <circle cx="72" cy="0" r="1.5" fill="#34D399" opacity="0.5" />
+                  <circle cx="0" cy="72" r="1.5" fill="#34D399" opacity="0.5" />
+                  <circle cx="72" cy="72" r="1.5" fill="#34D399" opacity="0.5" />
                 </pattern>
               </defs>
-              <rect width="100%" height="100%" fill="url(#hero-jewelry-lattice)" />
+              <rect width="100%" height="100%" fill="url(#hero-jewelry-pattern)" />
             </svg>
 
-            {/* Soft Radial Vignette for Perfect Contrast */}
-            <div className="absolute inset-0 bg-radial from-transparent via-emerald-950/5 to-black/35 pointer-events-none" />
+            {/* Soft Radial Vignette for Perfect Luxury Contrast */}
+            <div className="absolute inset-0 bg-radial from-transparent via-[#021811]/30 to-[#010c08]/75 pointer-events-none" />
+            {/* Seamless Bottom Fade into Showcase */}
+            <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#021811] via-[#021811]/60 to-transparent pointer-events-none" />
           </div>
 
-          <div className="relative w-full max-w-[1700px] min-h-[90vh] flex items-start justify-center pt-4">
-            {/* Pure VINI VICI VIDI Branding with Shiny Metallic Silver Corners on Letters */}
+          <div className="relative w-full max-w-[1700px] min-h-[90vh] flex items-start justify-center pt-4 pointer-events-none">
+            {/* Pure VINI VICI VIDI Branding - 925 Sterling Silver Gradient Finish */}
             <div className="absolute inset-0 z-2 w-full h-full uppercase pointer-events-none font-display">
               {/* VINI (Top Left) */}
-              <div className="brand-group-vini absolute top-[4%] left-[4%] flex items-center z-1 text-[clamp(6rem,14vw,20rem)] font-black leading-[0.88] tracking-tight select-none">
-                <SilverCornerLetter char="V" />
-                <SilverCornerLetter char="I" />
-                <SilverCornerLetter char="N" />
-                <SilverCornerLetter char="I" />
+              <div className="brand-group-vini absolute top-[4%] left-[4%] flex items-center z-1 text-[clamp(6rem,14vw,20rem)] font-black leading-[0.88] tracking-tight bg-gradient-to-b from-[#FFFFFF] via-[#E2E8F0] to-[#94A3B8] bg-clip-text text-transparent drop-shadow-[0_12px_28px_rgba(0,0,0,0.65)] select-none">
+                VINI
               </div>
 
               {/* VICI (Centerpiece) */}
-              <div className="brand-group-vici absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center z-1 text-[clamp(10rem,24vw,36rem)] font-black leading-[0.88] tracking-tight select-none">
-                <SilverCornerLetter char="V" isCenterpiece />
-                <SilverCornerLetter char="I" isCenterpiece />
-                <SilverCornerLetter char="C" isCenterpiece />
-                <SilverCornerLetter char="I" isCenterpiece />
-                <div className="absolute w-[150%] h-[150%] rounded-full bg-radial from-[#1F7A5C]/20 via-[#0B4A3B]/8 to-transparent blur-[70px] pointer-events-none -z-1" />
+              <div className="brand-group-vici absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center z-1 text-[clamp(10rem,24vw,36rem)] font-black leading-[0.88] tracking-tight bg-gradient-to-b from-[#FFFFFF] via-[#E6F2EA] to-[#8FA69B] bg-clip-text text-transparent drop-shadow-[0_15px_38px_rgba(0,0,0,0.75)] select-none">
+                VICI
+                <div className="absolute w-[150%] h-[150%] rounded-full bg-radial from-[#2FE4B6]/25 via-[#0B4A3B]/15 to-transparent blur-[75px] pointer-events-none -z-1" />
               </div>
 
               {/* VIDI (Bottom Right) */}
-              <div className="brand-group-vidi absolute bottom-[6%] right-[4%] flex items-center z-1 text-[clamp(6rem,14vw,20rem)] font-black leading-[0.88] tracking-tight select-none">
-                <SilverCornerLetter char="V" />
-                <SilverCornerLetter char="I" />
-                <SilverCornerLetter char="D" />
-                <SilverCornerLetter char="I" />
+              <div className="brand-group-vidi absolute bottom-[6%] right-[4%] flex items-center z-1 text-[clamp(6rem,14vw,20rem)] font-black leading-[0.88] tracking-tight bg-gradient-to-b from-[#FFFFFF] via-[#E2E8F0] to-[#94A3B8] bg-clip-text text-transparent drop-shadow-[0_12px_28px_rgba(0,0,0,0.65)] select-none">
+                VIDI
               </div>
             </div>
 
@@ -252,19 +261,19 @@ export default function HomePage() {
         </section>
 
         {/* 3D Stacked Card Carousel Section */}
-        <section id="showcase" className="relative w-full overflow-hidden">
+        <section id="showcase" className="relative w-full overflow-hidden bg-gradient-to-b from-[#021F17]/90 via-[#053729]/80 to-[#021E16]/90 border-t border-b border-[#1fe0bb]/20">
           <CarouselStacked />
         </section>
 
         {/* 3D Infinite Photography Gallery */}
         <section
           id="collection"
-          className="relative w-full bg-[#050505] border-t border-b border-[#1fe0bb]/20 overflow-hidden"
+          className="relative w-full bg-gradient-to-b from-[#021E16]/90 via-[#01160F] to-[#01120D] border-b border-[#1fe0bb]/20 overflow-hidden"
         >
           {/* Ambient emerald glow */}
           <div
             aria-hidden="true"
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] max-w-[1100px] h-[500px] bg-gradient-to-r from-[#00ffc4]/8 via-[#00c9a7]/18 to-[#008e76]/8 blur-[100px] rounded-full pointer-events-none z-0"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] max-w-[1100px] h-[500px] bg-gradient-to-r from-[#00ffc4]/15 via-[#00c9a7]/25 to-[#008e76]/15 blur-[110px] rounded-full pointer-events-none z-0"
           />
 
           {/* Full-screen 3D Gallery Canvas */}

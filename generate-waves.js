@@ -50,10 +50,10 @@ for (let b = 1; b <= numBands; b++) {
   const last = points[points.length - 1];
   d += ` L ${last.x} ${last.y}`;
   
-  // Alternating light green shades
+  // Alternating dark green and light green gradient ribbons
   const isAlt = b % 2 === 0;
-  const strokeColor = isAlt ? "#1F7A5C" : "#0B4A3B";
-  const opacity = isAlt ? 0.14 : 0.08;
+  const strokeColor = isAlt ? "url(#lightGreenLine)" : "url(#darkGreenLine)";
+  const opacity = isAlt ? 0.32 : 0.24;
   
   bands.push(
     `<path d="${d}" fill="none" stroke="${strokeColor}" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round" opacity="${opacity}" />`
@@ -71,6 +71,18 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${hei
       <stop offset="0%" stop-color="#E2F2E8" stop-opacity="0.6" />
       <stop offset="50%" stop-color="#F8F7F4" stop-opacity="0.2" />
       <stop offset="100%" stop-color="#DBEFE3" stop-opacity="0.6" />
+    </linearGradient>
+    <linearGradient id="darkGreenLine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#042F24" />
+      <stop offset="40%" stop-color="#0B4A3B" />
+      <stop offset="70%" stop-color="#0E5E4A" />
+      <stop offset="100%" stop-color="#021A12" />
+    </linearGradient>
+    <linearGradient id="lightGreenLine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1F7A5C" />
+      <stop offset="35%" stop-color="#34D399" />
+      <stop offset="65%" stop-color="#2FE4B6" />
+      <stop offset="100%" stop-color="#10B981" />
     </linearGradient>
   </defs>
   <rect width="100%" height="100%" fill="url(#mintCenter)" />

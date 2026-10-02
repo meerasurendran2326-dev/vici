@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${inter.variable} ${cormorant.variable} ${montserrat.variable} ${bebasNeue.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#050505] text-[#f2f2f2]">
+      <body className="min-h-full flex flex-col bg-[#011811] text-[#f2f2f2]">
         <WishlistProvider>
           {children}
           <WishlistDrawer />
